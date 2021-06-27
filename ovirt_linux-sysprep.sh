@@ -19,9 +19,17 @@ echo "Changing Hostname"
 hostnamectl set-hostname 'localhost' && echo "Hostname Changed to $(hostname)" || echo "Not Changed"
 echo " "
 
+###Remove Network Hardware Information###
+echo "Remove Network and Hardwre Related Information"
+sed -i '/^HWADDR=/d' /etc/sysconfig/network-scripts/ifcfg-* && echo "HWADDR Removed" || echo "HWADDR Not Removed"
+echo " "
+sleep 5
+sed -i '/^UUID=/d' /etc/sysconfig/network-scripts/ifcfg-* && echo "UUID Removed" || echo "UUID Not Removed"
+echo " "
+
 ###Remove Host Specific Information###
 echo "Remove Host Specific Information"
-rm -f /etc/udev/rules.d/*-persistent-*.rules && sed -i '/^HWADDR=/d' /etc/sysconfig/network-scripts/ifcfg-* && sed -i '/^UUID=/d' /etc/sysconfig/network-scripts/ifcfg-* && echo "Removed" || echo "Not Removed"
+rm -f /etc/udev/rules.d/*-persistent-*.rules && echo "Removed" || echo "Not Removed"
 echo " "
 
 ### Reboot the Machine ###
