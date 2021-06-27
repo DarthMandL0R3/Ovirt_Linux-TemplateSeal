@@ -27,6 +27,11 @@ sleep 5
 sed -i '/^UUID=/d' /etc/sysconfig/network-scripts/ifcfg-* && echo "UUID Removed" || echo "UUID Not Removed"
 echo " "
 
+###Remove RHN System ID###
+echo "Remove RHN System ID"
+rm -f /etc/sysconfig/rhn/systemid && echo "Removed" || echo "Not Removed"
+echo " "
+
 ###Remove Host Specific Information###
 echo "Remove Host Specific Information"
 rm -f /etc/udev/rules.d/*-persistent-*.rules && echo "Removed" || echo "Not Removed"
